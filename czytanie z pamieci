@@ -1,0 +1,24 @@
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+int shmid, i;
+char *buf;
+int max=10;
+shmid = shmget(12345, max*sizeof(char), IPC_EXCL);
+buf = shmat(shmid, 0, SHM_RDONLY);
+for(i=0; i<2000; i++)
+    {
+	
+        if(buf[i]!=buf[i+1]!=buf[i+2]!=buf[i+3]!=buf[i+4])
+        printf("\n%d\n", buf[i] );
+    }
+
+    printf("\nodczyt udany\n");
+
+}
