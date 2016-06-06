@@ -16,7 +16,7 @@ int main()
 	
 	for(i=0; i<2000; i++)
 	{
-	buf[i] = rand();
+	buf[i] = 4*i +5;
 	printf("\n%d\n"	, buf[i]);
 	}
 	printf("\nzapis udany\n");
